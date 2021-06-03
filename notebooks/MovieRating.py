@@ -66,4 +66,11 @@ finalPopularMoviesWithTitlesDf.coalesce(1)\
 
 # COMMAND ----------
 
+popularMoviesFromLateDf = spark.read.format("csv")\
+               .option("header", True)\
+               .option("inferSchema", True)\
+               .load('/mnt/movielens/popular-movies')
 
+popularMoviesFromLateDf.printSchema()
+
+popularMoviesFromLateDf.show(100)
